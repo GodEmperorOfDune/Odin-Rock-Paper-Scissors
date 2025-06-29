@@ -9,4 +9,12 @@ function getComputerChoice () {
     return choices[getRandomInt(3)];
 }
 
+function getPlayerChoice () {
+    let playerInput = prompt("Your Choice");
+    let playerChoice = playerInput[0].toUpperCase() + playerInput.slice(1).toLowerCase();
+    return playerChoice;
+}
+
+
 console.log(getComputerChoice());
+console.log(getPlayerChoice());
