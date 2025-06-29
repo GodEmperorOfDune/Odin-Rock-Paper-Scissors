@@ -51,4 +51,15 @@ function playRound (humanChoice, computerChoice) {
     }
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+function playGame(rounds) {
+    for(let i=0; i<rounds; i++){
+        playRound(getPlayerChoice(), getComputerChoice());
+    }
+    if(humanScore > computerScore) {
+        console.log("You Win!");
+    } else {
+        console.log("You Lose!");
+    }
+}
+
+playGame(5);
