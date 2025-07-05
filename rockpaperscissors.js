@@ -7,6 +7,7 @@ const selectionButtons = document.querySelectorAll(".selectionButton");
 const humanScoreDiv = document.querySelector("#humanScoreDiv");
 const computerScoreDiv = document.querySelector("#computerScoreDiv");
 const resultsDiv = document.querySelector(".resultsDiv");
+const scoreDiv = document.querySelector(".scoreDiv");
 
 
 function getRandomInt(max) {
@@ -29,7 +30,7 @@ function playRound (humanChoice, computerChoice) {
     let winText = "You Win! " + humanChoice + " beats " + computerChoice;
     let loseText = "You Lose! " + humanChoice + " loses to " + computerChoice
     let tieText = "It is a Tie: " + humanChoice + " is the same as " + computerChoice
-    
+
     if(humanChoice === computerChoice) {
         console.log(tieText);
         resultsDiv.textContent = tieText;
@@ -67,6 +68,17 @@ function playRound (humanChoice, computerChoice) {
     }
 
     // updating score and showing most recent round win/loss/tie
+    if(humanScore === 5) {
+        let content = document.createElement("div");
+        content.textContent = "You Win The Game";
+        scoreDiv.appendChild(content);
+    }
+
+    if(computerScore === 5) {
+        let content = document.createElement("div");
+        content.textContent = "You Lose The Game";
+        scoreDiv.appendChild(content);
+    }
     humanScoreDiv.textContent = "Your Score: " + humanScore;
     computerScoreDiv.textContent = "Computer Score: " + computerScore;
 
