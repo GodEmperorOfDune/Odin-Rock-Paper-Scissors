@@ -4,6 +4,10 @@ let humanScore = 0;
 let computerScore = 0;
 
 const selectionButtons = document.querySelectorAll(".selectionButton");
+const humanScoreDiv = document.querySelector("#humanScoreDiv");
+const computerScoreDiv = document.querySelector("#computerScoreDiv");
+const resultsDiv = document.querySelector(".resultsDiv");
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -22,35 +26,50 @@ function getPlayerChoice () {
 function playRound (humanChoice, computerChoice) {
     console.log(humanChoice);
     console.log(computerChoice);
-
+    let winText = "You Win! " + humanChoice + " beats " + computerChoice;
+    let loseText = "You Lose! " + humanChoice + " loses to " + computerChoice
+    let tieText = "It is a Tie: " + humanChoice + " is the same as " + computerChoice
+    
     if(humanChoice === computerChoice) {
-        console.log("It is a Tie: " + humanChoice + " is the same as " + computerChoice);
+        console.log(tieText);
+        resultsDiv.textContent = tieText;
         humanScore++;
     }
     if((humanChoice === "Rock") && (computerChoice === "Scissors")) {
-        console.log("You Win! " + humanChoice + " beats " + computerChoice);
+        console.log(winText);
+        resultsDiv.textContent = winText;
         humanScore++
     }
     if((humanChoice === "Paper") && (computerChoice === "Rock")) {
-        console.log("You Win! " + humanChoice + " beats " + computerChoice);
+        console.log(winText);
+        resultsDiv.textContent = winText;
         humanScore++
     }
     if((humanChoice === "Scissors") && (computerChoice === "Paper")) {
-        console.log("You Win! " + humanChoice + " beats " + computerChoice);
+        console.log(winText);
+        resultsDiv.textContent = winText;
         humanScore++
     }
     if((computerChoice === "Rock") && (humanChoice === "Scissors")) {
-        console.log("You Lose! " + humanChoice + " loses to " + computerChoice);
+        console.log(loseText);
+        resultsDiv.textContent = loseText;
         computerScore++;
     }
     if((computerChoice === "Paper") && (humanChoice === "Rock")) {
-        console.log("You Lose! " + humanChoice + " loses to " + computerChoice);
+        console.log(loseText);
+        resultsDiv.textContent = loseText;
         computerScore++;
     }
     if((computerChoice === "Scissors") && (humanChoice === "Paper")) {
-        console.log("You Lose! " + humanChoice + " loses to " + computerChoice);
+        console.log(loseText);
+        resultsDiv.textContent = loseText;
         computerScore++;
     }
+
+    // updating score and showing most recent round win/loss/tie
+    humanScoreDiv.textContent = "Your Score: " + humanScore;
+    computerScoreDiv.textContent = "Computer Score: " + computerScore;
+
 }
 
 function playGame(rounds) {
