@@ -3,6 +3,8 @@ const choices = {0: "Rock", 1: "Paper", 2: "Scissors"};
 let humanScore = 0;
 let computerScore = 0;
 
+const selectionButtons = document.querySelectorAll(".selectionButton");
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -62,4 +64,14 @@ function playGame(rounds) {
     }
 }
 
-playGame(5);
+// playGame(5);
+
+function buttonPlayRound(humanChoice) {
+    playRound(humanChoice, getComputerChoice());
+}
+
+selectionButtons.forEach((button => {
+    button.addEventListener("click", function(e){
+        buttonPlayRound(e.target.textContent)
+    });
+}));
